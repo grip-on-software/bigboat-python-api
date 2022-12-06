@@ -392,10 +392,6 @@ www:
                                    {
                                        "id": "y7bzwghzP9ouM56g6",
                                        "name": "nginx",
-                                       "state": {
-                                           "current": "running",
-                                           "desired": "running"
-                                       }
                                    },
                                    {
                                        "id": "ySYXNTPw2ry9XE6nu",
@@ -413,7 +409,7 @@ www:
             for instance in instances
         ]))
         self.assertEqual(instance_data, [
-            ('nginx', 'running', 'running'),
+            ('nginx', 'running', None),
             ('nginx2', 'starting', 'running')
         ])
 

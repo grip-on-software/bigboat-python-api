@@ -19,7 +19,7 @@ limitations under the License.
 
 from typing import Any, Generic, Optional, TypeVar, TYPE_CHECKING
 from .utils import readonly
-if TYPE_CHECKING:
+if TYPE_CHECKING: # pragma: no cover
     from .client import Client
 else:
     Client = object

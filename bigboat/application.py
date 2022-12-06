@@ -20,7 +20,7 @@ limitations under the License.
 from typing import Dict, Optional, TYPE_CHECKING
 from .entity import Entity
 from .utils import readonly
-if TYPE_CHECKING:
+if TYPE_CHECKING: # pragma: no cover
     # pylint: disable=cyclic-import
     from .client import Client
     from .instance import Instance

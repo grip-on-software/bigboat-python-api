@@ -25,14 +25,14 @@ from bigboat.entity import Entity
 
 class Concrete_Entity(Entity):
     """
-    A concrete entity.
+    A concrete entity that improperly calls the interface methods.
     """
 
     def update(self) -> Optional['Concrete_Entity']:
-        return None
+        return self if super().update() is not None else None
 
     def delete(self) -> bool:
-        return False
+        return not super().delete()
 
 class Entity_Test(unittest.TestCase):
     """
@@ -51,9 +51,11 @@ class Entity_Test(unittest.TestCase):
         self.assertEqual(entity.client, client)
 
         # Test the interface
-        self.assertIsNone(entity.update())
+        with self.assertRaises(NotImplementedError):
+            entity.update()
 
-        self.assertFalse(entity.delete())
+        with self.assertRaises(NotImplementedError):
+            entity.delete()
 
         # Test unknown attribute access
         with self.assertRaises(AttributeError):
