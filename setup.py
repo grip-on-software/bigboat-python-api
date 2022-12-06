@@ -30,9 +30,9 @@ def main() -> None:
           version='0.3.0',
           description='BigBoat docker dashboard API',
           long_description='''Python wrapper library for the BigBoat API.
-    Support for v2 and the deprecated v1 is included.
-    This API can create, retrieve, update and delete application definitions,
-    do similar operations for instances and poll for status''',
+Support for v2 and the deprecated v1 is included.
+This API can create, retrieve, update and delete application definitions,
+do similar operations for instances and poll for status''',
           author='ICTU, Leiden University',
           author_email='l.s.helwerda@liacs.leidenuniv.nl',
           url='https://github.com/ICTU/bigboat-python-api',
@@ -45,6 +45,7 @@ def main() -> None:
               'requests>=2.17.3',
               'pyyaml>=3.12'
           ],
+          python_requires='>=3',
           test_suite='tests',
           classifiers=[
               'Development Status :: 3 - Alpha',

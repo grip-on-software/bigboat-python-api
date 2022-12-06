@@ -62,7 +62,7 @@ tag: get_version
 .PHONY: build
 build:
 	python setup.py sdist
-	python setup.py bdist_wheel --universal
+	python setup.py bdist_wheel
 
 .PHONY: push
 push: get_version
