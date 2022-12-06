@@ -1,7 +1,8 @@
 """
 Package module for the BigBoat API.
 
-Copyright 2017 ICTU
+Copyright 2017-2020 ICTU
+Copyright 2017-2022 Leiden University
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -18,4 +19,4 @@ limitations under the License.
 
 from .client import Client_v1, Client_v2
 
-__version__ = '0.2.13'
+__version__ = '0.3.0'

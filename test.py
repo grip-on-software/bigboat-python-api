@@ -1,7 +1,8 @@
 """
 Runner for the BigBoat API tests.
 
-Copyright 2018 ICTU
+Copyright 2017-2020 ICTU
+Copyright 2017-2022 Leiden University
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -21,7 +22,7 @@ import sys
 import unittest
 import xmlrunner
 
-def run_tests():
+def run_tests() -> int:
     """
     Run unittests and write XML reports.
     """

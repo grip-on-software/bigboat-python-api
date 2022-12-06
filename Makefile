@@ -5,12 +5,20 @@ TEST=test.py
 all: release
 
 .PHONY: release
-release: pylint test clean tag build push upload
+release: pylint mypy test clean build tag push upload
 
 .PHONY: setup
 setup:
 	pip install -r requirements.txt
 	pip install setuptools wheel
+
+.PHONY: test_setup
+test_setup:
+	pip install -r test-requirements.txt
+
+.PHONY: analysis_setup
+analysis_setup:
+	pip install -r analysis-requirements.txt
 
 .PHONY: get_version
 get_version: get_setup_version get_init_version get_sonar_version
@@ -41,7 +49,11 @@ get_sonar_version:
 
 .PHONY: pylint
 pylint:
-	pylint *.py bigboat/*.py
+	pylint *.py bigboat/*.py tests/*.py
+
+.PHONY: mypy
+mypy:
+	mypy *.py bigboat tests --html-report mypy-report --cobertura-xml-report mypy-report --junit-xml mypy-report/junit.xml --no-incremental --show-traceback
 
 .PHONY: tag
 tag: get_version

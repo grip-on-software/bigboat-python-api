@@ -9,4 +9,5 @@ dist
 bigboat.egg-info
 .coverage
 coverage.xml
+mypy-report/
 test-reports/

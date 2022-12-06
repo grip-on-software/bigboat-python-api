@@ -1,7 +1,8 @@
 """
 Instance entity from the API.
 
-Copyright 2017 ICTU
+Copyright 2017-2020 ICTU
+Copyright 2017-2022 Leiden University
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,8 +17,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+from typing import Any, Dict, Optional, Union, TYPE_CHECKING
 from .entity import Entity
 from .utils import readonly
+if TYPE_CHECKING:
+    # pylint: disable=cyclic-import
+    from .application import Application
+    from .client import Client
+else:
+    Application = object
+    Client = object
 
 @readonly("name", "current_state", "desired_state", "application", "services",
           "parameters", "options")
@@ -26,8 +35,10 @@ class Instance(Entity):
     A deployed (parameterized) application instance entity.
     """
 
-    def __init__(self, client, name, current_state=None, **kwargs):
-        super(Instance, self).__init__(client)
+    def __init__(self, client: Client, name: str,
+                 current_state: Optional[str] = None,
+                 **kwargs: Optional[Union[str, Application, Dict[str, Any]]]):
+        super().__init__(client)
         self._name = name
         self._current_state = current_state
         self._desired_state = kwargs.get('desired_state')
@@ -37,7 +48,7 @@ class Instance(Entity):
         self._parameters = kwargs.get('parameters')
         self._options = kwargs.get('options')
 
-    def update(self):
+    def update(self) -> Optional['Instance']:
         """
         Request the instance to be created with a desired state of 'running'.
         """
@@ -50,14 +61,14 @@ class Instance(Entity):
                                            parameters=self.parameters,
                                            options=self.options)
 
-    def delete(self):
+    def delete(self) -> bool:
         """
         Request the instance to be stopped.
         """
 
-        return self.client.delete_instance(self.name)
+        return self.client.delete_instance(self.name) is not None
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         parts = [
             ('name', self.name),
             ('current_state', self.current_state),
@@ -67,6 +78,6 @@ class Instance(Entity):
             ('parameters', self.parameters),
             ('options', self.options)
         ]
-        properties = ['{}={!r}'.format(key, value) for (key, value) in parts]
+        properties = [f'{key}={value!r}' for (key, value) in parts]
 
-        return 'Instance({})'.format(', '.join(properties))
+        return f'Instance({", ".join(properties)})'

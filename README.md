@@ -13,15 +13,14 @@ update and delete application definitions, do similar operations for instances
 and poll for status.
 
 Support for v2 and the deprecated v1 APIs (limited to certain operations) is 
-included.
+included. Note that BigBoat development itself has halted.
 
 ## Requirements
 
-The BigBoat Python API has been tested to work on Python 2.7 and 3.6. The API 
-has few dependencies; see `requirements.txt` for the list of installation 
-requirements. The short list is also repeated here:
+The BigBoat Python API has been tested to work on Python 3.8. The API has few 
+dependencies; see `requirements.txt` for the list of installation requirements. 
+The short list is also repeated here:
 
-- [Future](http://python-future.org/overview.html)
 - [Requests](http://docs.python-requests.org/en/master/user/install/)
 - [PyYAML](http://pyyaml.org/wiki/PyYAMLDocumentation)
 
@@ -54,7 +53,7 @@ You can then use various methods on the client API, namely:
 - `api.apps()`: List of Applications
 - `api.get_app(name, version)`: Retrieve a specific Application
 - `api.update_app(name, version)`: Register an Application
-- `api.delete_app(name, version`: Delete an Application
+- `api.delete_app(name, version)`: Delete an Application
 - `api.instances()`: List of Instances
 - `api.get_instance()`: Retrieve a specific Instance
 - `api.update_instance(name, app_name, version, ...)`: Start an Instance
@@ -65,7 +64,7 @@ In addition to the common methods, v2 has the following API methods:
   bigboat compose file for an Application
 - `api.update_compose(name, version, file_name, content)`: Update a docker 
   compose or bigboat compose file for an Application
-- `api.statuses()`: Retrieve a list of satus dictionaries
+- `api.statuses()`: Retrieve a list of status dictionaries
 
 ## Development
 
@@ -73,8 +72,10 @@ In addition to the common methods, v2 has the following API methods:
   tests and report on coverage.
 - [Coveralls](https://coveralls.io/github/ICTU/bigboat-python-api) receives 
   coverage reports and tracks them.
-- You can perform local lint checks, tests and coverage during development 
-  using `make pylint`, `make test` and `make coverage`, respectively.
+- You can perform local lint checks, typing checks, tests and coverage during 
+  development with `make pylint`, `make mypy`, `make test` and `make coverage`, 
+  respectively, after installing dependencies from `analysis-requirements.txt` 
+  (`pylint` and `mypy`) and `test-requirements.txt` (`test` and `coverage`).
 - We publish releases to [PyPI](https://pypi.python.org/pypi/bigboat) using 
   `make release` which performs multiple checks: version number consistency, 
   lint and unit tests.

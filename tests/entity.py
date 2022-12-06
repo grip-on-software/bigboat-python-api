@@ -1,7 +1,8 @@
 """
 Tests for generic base entity.
 
-Copyright 2017 ICTU
+Copyright 2017-2020 ICTU
+Copyright 2017-2022 Leiden University
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,33 +17,43 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+from typing import Optional
 import unittest
-from mock import MagicMock
+from unittest.mock import MagicMock
 from bigboat.client import Client
 from bigboat.entity import Entity
+
+class Concrete_Entity(Entity):
+    """
+    A concrete entity.
+    """
+
+    def update(self) -> Optional['Concrete_Entity']:
+        return None
+
+    def delete(self) -> bool:
+        return False
 
 class Entity_Test(unittest.TestCase):
     """
     Tests for entity from the BigBoat API.
     """
 
-    def test_interface(self):
+    def test_interface(self) -> None:
         """
         Test the enforcement of abstract interface.
         """
 
         client = MagicMock(spec_set=Client)
-        entity = Entity(client)
+        entity = Concrete_Entity(client)
 
         # Test the client property.
         self.assertEqual(entity.client, client)
 
         # Test the interface
-        with self.assertRaises(NotImplementedError):
-            entity.update()
+        self.assertIsNone(entity.update())
 
-        with self.assertRaises(NotImplementedError):
-            entity.delete()
+        self.assertFalse(entity.delete())
 
         # Test unknown attribute access
         with self.assertRaises(AttributeError):

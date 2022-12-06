@@ -1,7 +1,8 @@
 """
 Application entity from the API.
 
-Copyright 2017 ICTU
+Copyright 2017-2020 ICTU
+Copyright 2017-2022 Leiden University
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,8 +17,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+from typing import Dict, Optional, TYPE_CHECKING
 from .entity import Entity
 from .utils import readonly
+if TYPE_CHECKING:
+    # pylint: disable=cyclic-import
+    from .client import Client
+    from .instance import Instance
+else:
+    Client = object
+    Instance = object
 
 @readonly("name", "version")
 class Application(Entity):
@@ -25,27 +34,28 @@ class Application(Entity):
     An application definition entity.
     """
 
-    def __init__(self, client, name, version):
-        super(Application, self).__init__(client)
+    def __init__(self, client: Client, name: str, version: str):
+        super().__init__(client)
 
         self._name = name
         self._version = version
 
-    def update(self):
+    def update(self) -> Optional['Application']:
         """
         Register the application definition in the BigBoat API.
         """
 
         return self.client.update_app(self.name, self.version)
 
-    def delete(self):
+    def delete(self) -> bool:
         """
         Delete the application definition in the BigBoat API.
         """
 
         return self.client.delete_app(self.name, self.version)
 
-    def start(self, name=None, **kwargs):
+    def start(self, name: Optional[str] = None, **kwargs: Dict[str, str]) -> \
+            Optional[Instance]:
         """
         Request an instance to be created with a desired state of 'running'
         for this application.
@@ -67,4 +77,4 @@ class Application(Entity):
                                            **kwargs)
 
     def __repr__(self):
-        return 'Application(name={!r}, version={!r})'.format(self.name, self.version)
+        return f'Application(name={self.name!r}, version={self.version!r})'

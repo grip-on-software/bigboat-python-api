@@ -1,7 +1,8 @@
 """
 Package module for the BigBoat API tests.
 
-Copyright 2017 ICTU
+Copyright 2017-2020 ICTU
+Copyright 2017-2022 Leiden University
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,4 +17,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-__all__ = []
+from typing import List
+
+__all__: List[str] = []

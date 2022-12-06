@@ -1,7 +1,8 @@
 """
 Generic base enntity.
 
-Copyright 2017 ICTU
+Copyright 2017-2020 ICTU
+Copyright 2017-2022 Leiden University
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,19 +17,25 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-from builtins import object
+from typing import Any, Generic, Optional, TypeVar, TYPE_CHECKING
 from .utils import readonly
+if TYPE_CHECKING:
+    from .client import Client
+else:
+    Client = object
+
+EntityT_co = TypeVar('EntityT_co', bound='Entity', covariant=True)
 
 @readonly("client")
-class Entity(object):
+class Entity(Generic[EntityT_co]):
     """
     An entity from the BigBoat API.
     """
 
-    def __init__(self, client):
+    def __init__(self, client: Client):
         self._client = client
 
-    def update(self):
+    def update(self) -> Optional[EntityT_co]:
         """
         Send the data of the entity as an update for its properties to the
         BigBoat API. The entity calls the relevant update method of the client.
@@ -40,7 +47,7 @@ class Entity(object):
 
         raise NotImplementedError('Must be implemented by subclasses')
 
-    def delete(self):
+    def delete(self) -> bool:
         """
         Delete the entity from the BigBoat API. The entity calls the relevant
         update method of the client.
@@ -51,5 +58,5 @@ class Entity(object):
 
         raise NotImplementedError('Must be implemented by subclasses')
 
-    def __getattr__(self, attr):
+    def __getattr__(self, attr: str) -> Any:
         raise AttributeError

@@ -1,7 +1,8 @@
 """
 Tests for instance entity from the API.
 
-Copyright 2017 ICTU
+Copyright 2017-2020 ICTU
+Copyright 2017-2022 Leiden University
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,7 +18,7 @@ limitations under the License.
 """
 
 import unittest
-from mock import MagicMock
+from unittest.mock import MagicMock
 from bigboat.client import Client
 from bigboat.application import Application
 from bigboat.instance import Instance
@@ -27,7 +28,7 @@ class ApplicationTest(unittest.TestCase):
     Tests for the application instance entity.
     """
 
-    def setUp(self):
+    def setUp(self) -> None:
         self.client = MagicMock(spec_set=Client)
         self.application = Application(self.client, 'nginx', 'latest')
         self.instance = Instance(self.client, 'nginx', current_state='starting',
@@ -37,7 +38,7 @@ class ApplicationTest(unittest.TestCase):
                                  parameters={'SETTING': 'value'},
                                  options={'storageBucket': 'custom'})
 
-    def test_update(self):
+    def test_update(self) -> None:
         """
         Test the Instance.update method.
         """
@@ -58,25 +59,25 @@ class ApplicationTest(unittest.TestCase):
                                                 })
         self.assertEqual(value, update_instance.return_value)
 
-    def test_delete(self):
+    def test_delete(self) -> None:
         """
         Test the Instance.delete method.
         """
 
         value = self.instance.delete()
         self.client.delete_instance.assert_called_once_with('nginx')
-        self.assertEqual(value, self.client.delete_instance.return_value)
+        self.assertTrue(value)
 
-    def test_repr(self):
+    def test_repr(self) -> None:
         """
         Test the Instance.__repr__ method.
         """
 
         application = "Application(name='nginx', version='latest')"
         services = "{'www': {'state': 'starting'}}"
-        instance = "Instance(name='nginx', current_state='starting', " + \
-                   "desired_state='running', application=" + \
-                   application + ", services=" + services + ", " + \
-                   "parameters={'SETTING': 'value'}, " + \
-                   "options={'storageBucket': 'custom'})"
+        instance = ("Instance(name='nginx', current_state='starting', "
+                    "desired_state='running', application="
+                    f"{application}, services={services}, "
+                    "parameters={'SETTING': 'value'}, "
+                    "options={'storageBucket': 'custom'})")
         self.assertEqual(repr(self.instance), instance)

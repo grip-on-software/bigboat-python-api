@@ -1,7 +1,8 @@
 """
 Tests for application entity from the API.
 
-Copyright 2017 ICTU
+Copyright 2017-2020 ICTU
+Copyright 2017-2022 Leiden University
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,7 +18,7 @@ limitations under the License.
 """
 
 import unittest
-from mock import MagicMock
+from unittest.mock import MagicMock
 from bigboat.client import Client
 from bigboat.application import Application
 
@@ -26,11 +27,11 @@ class ApplicationTest(unittest.TestCase):
     Tests for the application definition entity.
     """
 
-    def setUp(self):
+    def setUp(self) -> None:
         self.client = MagicMock(spec_set=Client)
         self.application = Application(self.client, 'nginx', 'latest')
 
-    def test_update(self):
+    def test_update(self) -> None:
         """
         Test the Application.update method.
         """
@@ -39,7 +40,7 @@ class ApplicationTest(unittest.TestCase):
         self.client.update_app.assert_called_once_with('nginx', 'latest')
         self.assertEqual(value, self.client.update_app.return_value)
 
-    def test_delete(self):
+    def test_delete(self) -> None:
         """
         Test the Application.delete method.
         """
@@ -48,7 +49,7 @@ class ApplicationTest(unittest.TestCase):
         self.client.delete_app.assert_called_once_with('nginx', 'latest')
         self.assertEqual(value, self.client.delete_app.return_value)
 
-    def test_start(self):
+    def test_start(self) -> None:
         """
         Test the Application.start method.
         """
@@ -64,7 +65,7 @@ class ApplicationTest(unittest.TestCase):
                                                             'latest',
                                                             options={'hi': 'y'})
 
-    def test_repr(self):
+    def test_repr(self) -> None:
         """
         Test the Application.__repr__ method.
         """

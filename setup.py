@@ -3,7 +3,8 @@
 """
 Package setup script.
 
-Copyright 2017 ICTU
+Copyright 2017-2020 ICTU
+Copyright 2017-2022 Leiden University
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -20,36 +21,43 @@ limitations under the License.
 
 from setuptools import setup, find_packages
 
-setup(name='bigboat',
-      version='0.2.13',
-      description='BigBoat docker dashboard API',
-      long_description='''Python wrapper library for the BigBoat API.
-Support for v2 and the deprecated v1 is included.
-This API can create, retrieve, update and delete application definitions,
-do similar operations for instances and poll for status''',
-      author='ICTU',
-      author_email='leon.helwerda@ictu.nl',
-      url='https://github.com/ICTU/bigboat-python-api',
-      license='Apache License, Version 2.0',
-      packages=find_packages(exclude=['tests*']),
-      scripts=[],
-      include_package_data=True,
-      install_requires=[
-          'future>=0.16.0',
-          'requests>=2.17.3',
-          'pyyaml>=3.12'
-      ],
-      test_suite='tests',
-      classifiers=[
-          'Development Status :: 3 - Alpha',
-          'Environment :: Web Environment',
-          'Intended Audience :: Developers',
-          'License :: OSI Approved :: Apache Software License',
-          'Operating System :: OS Independent',
-          'Programming Language :: Python',
-          'Programming Language :: Python :: 2.7',
-          'Programming Language :: Python :: 3.6',
-          'Topic :: Internet :: WWW/HTTP',
-          'Topic :: Software Development :: Libraries :: Python Modules',
-          'Topic :: Software Development :: Build Tools'],
-      keywords=['docker', 'dashboard', 'bigboat', 'api'])
+def main() -> None:
+    """
+    Setup the package.
+    """
+
+    setup(name='bigboat',
+          version='0.3.0',
+          description='BigBoat docker dashboard API',
+          long_description='''Python wrapper library for the BigBoat API.
+    Support for v2 and the deprecated v1 is included.
+    This API can create, retrieve, update and delete application definitions,
+    do similar operations for instances and poll for status''',
+          author='ICTU, Leiden University',
+          author_email='l.s.helwerda@liacs.leidenuniv.nl',
+          url='https://github.com/ICTU/bigboat-python-api',
+          license='Apache License, Version 2.0',
+          packages=find_packages(exclude=['tests*']),
+          package_data={'bigboat': ['py.typed']},
+          scripts=[],
+          include_package_data=True,
+          install_requires=[
+              'requests>=2.17.3',
+              'pyyaml>=3.12'
+          ],
+          test_suite='tests',
+          classifiers=[
+              'Development Status :: 3 - Alpha',
+              'Environment :: Web Environment',
+              'Intended Audience :: Developers',
+              'License :: OSI Approved :: Apache Software License',
+              'Operating System :: OS Independent',
+              'Programming Language :: Python',
+              'Programming Language :: Python :: 3.8',
+              'Topic :: Internet :: WWW/HTTP',
+              'Topic :: Software Development :: Libraries :: Python Modules',
+              'Topic :: Software Development :: Build Tools'],
+          keywords=['docker', 'dashboard', 'bigboat', 'api'])
+
+if __name__ == "__main__":
+    main()
