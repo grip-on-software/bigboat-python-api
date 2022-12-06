@@ -341,7 +341,7 @@ class Client_v2(Client):
         return request.text
 
     def update_compose(self, name: str, version: str, file_name: str,
-                       content: str) -> bool:
+                       content: Union[str, bytes]) -> bool:
         """
         Update a docker compose or bigboat compose file for the application.
 
@@ -349,7 +349,7 @@ class Client_v2(Client):
             name (str): The name of the application
             version (str): The version of the application
             file_name (str): 'dockerCompose' or 'bigboatCompose'
-            content (str): The file contents
+            content (str or bytes): The file contents
 
         Returns:
             bool: Whether the compose file was successfully updated.
