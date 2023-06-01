@@ -33,9 +33,9 @@ def main() -> None:
 Support for v2 and the deprecated v1 is included.
 This API can create, retrieve, update and delete application definitions,
 do similar operations for instances and poll for status''',
-          author='ICTU, Leiden University',
+          author='Leon Helwerda',
           author_email='l.s.helwerda@liacs.leidenuniv.nl',
-          url='https://github.com/ICTU/bigboat-python-api',
+          url='https://github.com/grip-on-software/bigboat-python-api',
           license='Apache License, Version 2.0',
           packages=find_packages(exclude=['tests*']),
           package_data={'bigboat': ['py.typed']},
@@ -48,7 +48,7 @@ do similar operations for instances and poll for status''',
           python_requires='>=3',
           test_suite='tests',
           classifiers=[
-              'Development Status :: 3 - Alpha',
+              'Development Status :: 4 - Beta',
               'Environment :: Web Environment',
               'Intended Audience :: Developers',
               'License :: OSI Approved :: Apache Software License',
@@ -58,7 +58,7 @@ do similar operations for instances and poll for status''',
               'Topic :: Internet :: WWW/HTTP',
               'Topic :: Software Development :: Libraries :: Python Modules',
               'Topic :: Software Development :: Build Tools'],
-          keywords=['docker', 'dashboard', 'bigboat', 'api'])
+          keywords='docker dashboard bigboat api')
 
 if __name__ == "__main__":
     main()
