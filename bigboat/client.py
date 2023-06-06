@@ -249,7 +249,7 @@ class Client_v2(Client):
         return self._session.get(self._format_url(path), timeout=self.TIMEOUT)
 
     def _put(self, path: str, content_type: Optional[str] = None,
-             data: Optional[str] = None,
+             data: Optional[Union[str, bytes]] = None,
              json: Optional[Any] = None) -> Response:
         headers: Dict[str, str] = {}
         if content_type is not None:

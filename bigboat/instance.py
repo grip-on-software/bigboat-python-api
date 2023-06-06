@@ -17,7 +17,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-from typing import Any, Dict, Optional, Union, TYPE_CHECKING
+from typing import Any, Dict, List, Optional, Tuple, Union, TYPE_CHECKING
 from .entity import Entity
 from .utils import readonly
 if TYPE_CHECKING: # pragma: no cover
@@ -69,7 +69,7 @@ class Instance(Entity):
         return self.client.delete_instance(self.name) is not None
 
     def __repr__(self) -> str:
-        parts = [
+        parts: List[Tuple[str, Union[str, Application, Dict[str, Any]]]] = [
             ('name', self.name),
             ('current_state', self.current_state),
             ('desired_state', self.desired_state),
