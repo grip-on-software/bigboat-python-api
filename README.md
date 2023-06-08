@@ -2,11 +2,11 @@
 
 [![PyPI](https://img.shields.io/pypi/v/bigboat.svg)](https://pypi.python.org/pypi/bigboat)
 [![Build 
-Status](https://travis-ci.org/ICTU/bigboat-python-api.svg?branch=master)](https://travis-ci.org/ICTU/bigboat-python-api)
+status](https://github.com/grip-on-software/bigboat-python-api/actions/workflows/bigboat-python-api.yml/badge.svg)](https://github.com/grip-on-software/bigboat-python-api/actions/workflows/bigboat-python-api.yml)
 [![Coverage 
-Status](https://coveralls.io/repos/github/ICTU/bigboat-python-api/badge.svg?branch=master)](https://coveralls.io/github/ICTU/bigboat-python-api?branch=master)
+Status](https://coveralls.io/repos/github/grip-on-software/bigboat-python-api/badge.svg?branch=master)](https://coveralls.io/github/grip-on-software/bigboat-python-api?branch=master)
 [![Quality Gate 
-Status](https://sonarcloud.io/api/project_badges/measure?project=bigboat-python-api&metric=alert_status)](https://sonarcloud.io/dashboard?id=bigboat-python-api)
+Status](https://sonarcloud.io/api/project_badges/measure?project=grip-on-software_bigboat-python-api&metric=alert_status)](https://sonarcloud.io/project/overview?id=grip-on-software_bigboat-python-api)
 
 Python wrapper library for the BigBoat API. This API can create, retrieve, 
 update and delete application definitions, do similar operations for instances 
@@ -17,7 +17,7 @@ included. Note that BigBoat development itself has halted.
 
 ## Requirements
 
-The BigBoat Python API has been tested to work on Python 3.8. The API has few 
+The BigBoat Python API has been tested to work on Python 3.8+. The API has few 
 dependencies; see `requirements.txt` for the list of installation requirements. 
 The short list is also repeated here:
 
@@ -68,17 +68,21 @@ In addition to the common methods, v2 has the following API methods:
 
 ## Development
 
-- [Travis](https://travis-ci.org/ICTU/bigboat-python-api) is used to run unit 
-  tests and report on coverage.
-- [Coveralls](https://coveralls.io/github/ICTU/bigboat-python-api) receives 
-  coverage reports and tracks them.
+- [GitHub 
+  Actions](https://github.com/grip-on-software/bigboat-python-api/actions) is 
+  used to run unit tests and report on coverage for commits and pull requests.
+- [SonarCloud](https://sonarcloud.io/project/overview?id=grip-on-software_bigboat-python-api) 
+  performs quality gate scans and tracks them.
+- [Coveralls](https://coveralls.io/github/grip-on-software/bigboat-python-api) 
+  receives coverage reports and tracks them.
 - You can perform local lint checks, typing checks, tests and coverage during 
   development with `make pylint`, `make mypy`, `make test` and `make coverage`, 
   respectively, after installing dependencies from `analysis-requirements.txt` 
-  (`pylint` and `mypy`) and `test-requirements.txt` (`test` and `coverage`).
+  (for the `pylint` and `mypy` recipes) and `test-requirements.txt` (necessary 
+  to let all recipes for checks function correctly).
 - We publish releases to [PyPI](https://pypi.python.org/pypi/bigboat) using 
   `make release` which performs multiple checks: version number consistency, 
-  lint and unit tests.
+  lint, typing and unit tests.
 
 ## License
 
