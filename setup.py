@@ -28,7 +28,7 @@ def main() -> None:
     """
 
     setup(name='bigboat',
-          version='0.3.0',
+          version='0.3.1',
           description='BigBoat docker dashboard API',
           long_description='''Python wrapper library for the BigBoat API.
 Support for v2 and the deprecated v1 is included.
@@ -56,7 +56,7 @@ do similar operations for instances and poll for status''',
               'Operating System :: OS Independent',
               'Programming Language :: Python',
               'Programming Language :: Python :: 3.8',
-              'Programming Language :: Python :: 3.11',
+              'Programming Language :: Python :: 3.12',
               'Topic :: Internet :: WWW/HTTP',
               'Topic :: Software Development :: Libraries :: Python Modules',
               'Topic :: Software Development :: Build Tools'],
