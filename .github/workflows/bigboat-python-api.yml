@@ -10,20 +10,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v3.5.0
+        uses: actions/checkout@v4.1.4
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v4.6.0
+      - uses: actions/setup-python@v5.1.0
         with:
           python-version: "${{ matrix.python }}"
-      - run: pip install -r requirements.txt
-      - run: pip install -r test-requirements.txt
-      - run: pip install coveralls
-      - run: make coverage
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install -r test-requirements.txt
+          pip install coveralls
+      - name: Unit test and coverage
+        run: make coverage
       - name: Adjust source paths in coverage for Sonar
         run: sed -i "s/<source>\/home\/runner\/work\/bigboat-python-api\/bigboat-python-api<\/source>/<source>\/github\/workspace<\/source>/g" /home/runner/work/bigboat-python-api/bigboat-python-api/coverage.xml
       - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@v1.9
+        uses: sonarsource/sonarcloud-github-action@v2.1.1
         env:
           SONAR_TOKEN: "${{ secrets.SONAR_TOKEN }}"
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
@@ -34,5 +37,5 @@ jobs:
     strategy:
       matrix:
         python:
-        - '3.8.17'
-        - '3.12.0'
+        - '3.8.18'
+        - '3.12.3'
