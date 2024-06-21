@@ -88,6 +88,7 @@ In addition to the common methods, v2 has the following API methods:
 - We publish releases to [PyPI](https://pypi.python.org/pypi/bigboat) using 
   `make release` which performs multiple checks: version number consistency, 
   lint, typing and unit tests.
+- Noteworthy changes to the module are added to the [changelog](CHANGELOG.md).
 
 ## License
 
