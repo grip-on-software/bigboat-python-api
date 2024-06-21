@@ -7,6 +7,8 @@ and we adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.0.0] - 2024-06-21
+
 ### Added
 
 - Mark as compatible with Python 3.12.
@@ -16,7 +18,7 @@ and we adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Package is now a `pyproject.toml` project instead of using `setup.py`.
 - Replace outdated `xmlrunner` package for tests with `unittest-xml-reporting`.
 
-## [0.3.0] - 2024-06-08
+## [0.3.0] - 2023-06-08
 
 ### Added
 

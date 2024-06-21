@@ -1,6 +1,6 @@
 [project]
 name = "bigboat"
-version = "0.3.1"
+version = "1.0.0"
 description = "BigBoat docker dashboard API"
 readme = "README.md"
 authors = [{name = "Leon Helwerda", email = "l.s.helwerda@liacs.leidenuniv.nl"}]
@@ -11,7 +11,7 @@ dependencies = [
     "pyyaml>=3.12"
 ]
 classifiers=[
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Environment :: Web Environment",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: Apache Software License",
