@@ -18,8 +18,7 @@ jobs:
           python-version: "${{ matrix.python }}"
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-          pip install -r test-requirements.txt
+          make setup_test
           pip install coveralls
       - name: Unit test and coverage
         run: make coverage
