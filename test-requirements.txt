@@ -1,3 +1,0 @@
-coverage
-requests-mock
-unittest-xml-reporting

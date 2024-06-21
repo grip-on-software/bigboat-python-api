@@ -32,6 +32,9 @@ Install the latest version from PyPI using:
 pip install bigboat
 ```
 
+For local development, you can use `pip install .` to install the package from 
+the cloned Git repository.
+
 ## Functionality
 
 First, import the library:
@@ -76,10 +79,12 @@ In addition to the common methods, v2 has the following API methods:
 - [Coveralls](https://coveralls.io/github/grip-on-software/bigboat-python-api) 
   receives coverage reports and tracks them.
 - You can perform local lint checks, typing checks, tests and coverage during 
-  development with `make pylint`, `make mypy`, `make test` and `make coverage`, 
-  respectively, after installing dependencies from `analysis-requirements.txt` 
-  (for the `pylint` and `mypy` recipes) and `test-requirements.txt` (necessary 
-  to let all recipes for checks function correctly).
+  development (after setting up a local [installation](#installation)) with 
+  `make pylint`, `make mypy`, `make test` and `make coverage`, respectively, 
+  after installing dependencies from `requirements-analysis.txt` by running 
+  `make setup_analysis` (for the `pylint` and `mypy` recipes) and from
+  `requirements-test.txt` with `make setup_test` (necessary for making all the 
+  Makefile recipes mentioned here function correctly).
 - We publish releases to [PyPI](https://pypi.python.org/pypi/bigboat) using 
   `make release` which performs multiple checks: version number consistency, 
   lint, typing and unit tests.

@@ -1,0 +1,53 @@
+[project]
+name = "bigboat"
+version = "0.3.1"
+description = "BigBoat docker dashboard API"
+readme = "README.md"
+authors = [{name = "Leon Helwerda", email = "l.s.helwerda@liacs.leidenuniv.nl"}]
+license = {text = "Apache 2.0"}
+requires-python = ">=3.8"
+dependencies = [
+    "requests>=2.17.3",
+    "pyyaml>=3.12"
+]
+classifiers=[
+    "Development Status :: 4 - Beta",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Build Tools",
+]
+keywords = ["docker dashboard", "bigboat", "api"]
+
+[project.urls]
+"Homepage" = "https://gros.liacs.nl"
+"PyPI" = "https://pypi.python.org/pypi/bigboat"
+"Source Code" = "https://github.com/grip-on-software/bigboat-python-api"
+"Issues" = "https://github.com/grip-on-software/bigboat-python-api/issues"
+"Pull Requests" = "https://github.com/grip-on-software/bigboat-python-api/pulls"
+"CI: GitHub Actions" = "https://github.com/grip-on-software/bigboat-python-api/actions"
+"CI: Coveralls" = "https://coveralls.io/github/grip-on-software/bigboat-python-api?branch=master"
+"CI: SonarCloud" = "https://sonarcloud.io/project/overview?id=grip-on-software_bigboat-python-api"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["bigboat"]
+
+[tool.setuptools.package-data]
+"bigboat" = ["py.typed"]
+
+[tool.mypy]
+mypy_path = "typeshed"

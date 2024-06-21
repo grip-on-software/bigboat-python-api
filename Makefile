@@ -10,23 +10,26 @@ release: pylint mypy test clean build tag push upload
 .PHONY: setup
 setup:
 	pip install -r requirements.txt
-	pip install setuptools wheel
 
-.PHONY: test_setup
-test_setup:
-	pip install -r test-requirements.txt
+.PHONY: setup_test
+setup_test: setup
+	pip install -r requirements-test.txt
 
-.PHONY: analysis_setup
-analysis_setup:
-	pip install -r analysis-requirements.txt
+.PHONY: setup_analysis
+setup_analysis: setup
+	pip install -r requirements-analysis.txt
+
+.PHONY: setup_release
+setup_release:
+	pip install -r requirements-release.txt
 
 .PHONY: get_version
-get_version: get_setup_version get_init_version get_sonar_version
-	if [ "${SETUP_VERSION}" != "${INIT_VERSION}" ] || [ "${SETUP_VERSION}" != "${SONAR_VERSION}" ]; then \
+get_version: get_toml_version get_init_version get_sonar_version
+	if [ "${TOML_VERSION}" != "${INIT_VERSION}" ] || [ "${TOML_VERSION}" != "${SONAR_VERSION}" ]; then \
 		echo "Version mismatch"; \
 		exit 1; \
 	fi
-	$(eval VERSION=$(SETUP_VERSION))
+	$(eval VERSION=$(TOML_VERSION))
 
 .PHONY: get_init_version
 get_init_version:
@@ -37,10 +40,10 @@ get_init_version:
 		exit 1; \
 	fi
 
-.PHONY: get_setup_version
-get_setup_version:
-	$(eval SETUP_VERSION=v$(shell python setup.py --version))
-	$(info Version in setup.py: $(SETUP_VERSION))
+.PHONY: get_toml_version
+get_toml_version:
+	$(eval TOML_VERSION=v$(shell grep "^version" pyproject.toml | sed -E "s/version = .([0-9.]+)./\\1/"))
+	$(info Version in pyproject.toml: $(TOML_VERSION))
 
 .PHONY: get_sonar_version
 get_sonar_version:
@@ -61,8 +64,7 @@ tag: get_version
 
 .PHONY: build
 build:
-	python setup.py sdist
-	python setup.py bdist_wheel
+	python -m build
 
 .PHONY: push
 push: get_version

@@ -1,6 +1,0 @@
-lxml
-mypy
-pylint
-types-PyYAML
-types-requests
-types-setuptools
