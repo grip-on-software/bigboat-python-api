@@ -1,6 +1,6 @@
 [project]
 name = "bigboat"
-version = "1.0.0"
+version = "1.0.1"
 description = "BigBoat docker dashboard API"
 readme = "README.md"
 authors = [{name = "Leon Helwerda", email = "l.s.helwerda@liacs.leidenuniv.nl"}]
@@ -43,8 +43,8 @@ keywords = ["docker dashboard", "bigboat", "api"]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools.packages.find]
-where = ["bigboat"]
+[tool.setuptools]
+packages = ["bigboat"]
 
 [tool.setuptools.package-data]
 "bigboat" = ["py.typed"]

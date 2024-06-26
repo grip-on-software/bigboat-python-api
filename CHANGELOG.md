@@ -7,7 +7,13 @@ and we adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [1.0.0] - 2024-06-21
+## [1.0.1] - 2024-06-26
+
+### Fixed
+
+- Wheel contains the module again.
+
+## [1.0.0] - 2024-06-21 [YANKED]
 
 ### Added
 
@@ -166,3 +172,4 @@ https://github.com/grip-on-software/bigboat-python-api/compare/v0.2.1...v0.2.2
 [0.2.1]: 
 https://github.com/grip-on-software/bigboat-python-api/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/grip-on-software/bigboat-python-api/tag/v0.2.0
+[YANKED]: https://pypi.org/help/#yanked
