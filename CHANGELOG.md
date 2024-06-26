@@ -142,7 +142,11 @@ and we adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Initial release of version with feature-complete API.
 
 [Unreleased]: 
-https://github.com/grip-on-software/bigboat-python-api/compare/v0.3.0...HEAD
+https://github.com/grip-on-software/bigboat-python-api/compare/v1.0.1...HEAD
+[1.0.1]: 
+https://github.com/grip-on-software/bigboat-python-api/compare/v1.0.0...v1.0.1
+[1.0.0]: 
+https://github.com/grip-on-software/bigboat-python-api/compare/v0.3.0...v1.0.0
 [0.3.0]: 
 https://github.com/grip-on-software/bigboat-python-api/compare/v0.2.13...v0.3.0
 [0.2.13]: 
