@@ -114,26 +114,26 @@ and we adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Client: v2 response for instances without current/desired state information 
   is now properly handled.
 
-## [0.2.3] - 2024-06-07
+## [0.2.3] - 2017-06-07
 
 ### Fixed
 
 - Client: Fix `update_instance` to transmit JSON body properly.
 
-## [0.2.2] - 2024-06-07
+## [0.2.2] - 2017-06-07
 
 ### Changed
 
 - Client: Improve error handling for non-JSON responses, using plain result 
   inexception instead.
 
-## [0.2.1] - 2024-06-06
+## [0.2.1] - 2017-06-06
 
 ### Changed
 
 - Client: Strip trailing slashes from base URL before formatting API URLs.
 
-## [0.2.0] - 2024-06-06
+## [0.2.0] - 2017-06-06
 
 ### Added
 
